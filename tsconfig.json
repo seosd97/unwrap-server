@@ -35,7 +35,9 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@graphql/*": ["src/graphql/*"],
+      "@resolvers/*": ["src/resolvers/*"],
+      "@type/*": ["src/types/*"]
     },
 
     "types": ["@types/node"]

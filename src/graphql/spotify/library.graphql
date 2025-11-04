@@ -1,0 +1,16 @@
+# Spotify User Library Types (Saved items)
+
+type SavedTrack {
+  added_at: DateTime!
+  track: Track!
+}
+
+type SavedAlbum {
+  added_at: DateTime!
+  album: Album!
+}
+
+# Genre
+type GenreSeed {
+  name: String!
+}

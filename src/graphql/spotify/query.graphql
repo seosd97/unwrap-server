@@ -1,0 +1,55 @@
+# Spotify API Queries
+
+extend type Query {
+  # ===== User =====
+  # Get public user profile
+  getSpotifyUser(id: ID!): User
+
+  # ===== Artist =====
+  # Get full artist information
+  getArtist(id: ID!): Artist
+
+  # Get multiple artists
+  getArtists(ids: [ID!]!): [Artist]!
+
+  # ===== Album =====
+  # Get full album (with tracks)
+  getAlbum(id: ID!): Album
+
+  # Get multiple albums
+  getAlbums(ids: [ID!]!): [Album]!
+
+  # Get artist's albums (simplified)
+  getArtistAlbums(artistId: ID!, limit: Int, offset: Int): [SimplifiedAlbum!]!
+
+  # ===== Track =====
+  # Get full track information
+  getTrack(id: ID!): Track
+
+  # Get multiple tracks
+  getTracks(ids: [ID!]!): [Track]!
+
+  # Get album's tracks (simplified)
+  getAlbumTracks(albumId: ID!, limit: Int, offset: Int): [SimplifiedTrack!]!
+
+  # ===== Playlist =====
+  # Get full playlist (with tracks)
+  getPlaylist(id: ID!): Playlist
+
+  # Get user's playlists (simplified)
+  getUserPlaylists(userId: ID!, limit: Int, offset: Int): [SimplifiedPlaylist!]!
+
+  # Get current user's playlists (requires authentication)
+  getMyPlaylists(limit: Int, offset: Int): [SimplifiedPlaylist!]!
+
+  # ===== User Library =====
+  # Get user's saved tracks (requires authentication)
+  getMySavedTracks(limit: Int, offset: Int): [SavedTrack!]!
+
+  # Get user's saved albums (requires authentication)
+  getMySavedAlbums(limit: Int, offset: Int): [SavedAlbum!]!
+
+  # ===== Genre =====
+  # Get available genre seeds for recommendations
+  getAvailableGenreSeeds: [GenreSeed!]!
+}

@@ -1,0 +1,31 @@
+# App User Schema
+# Wraps Spotify user profile with app-specific data
+
+type AppUser {
+  id: ID!
+  spotifyProfile: UserProfile!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+
+  # App-specific fields
+  preferences: UserPreferences
+  stats: UserStats
+}
+
+type UserPreferences {
+  theme: String
+  notifications: Boolean
+}
+
+type UserStats {
+  totalWraps: Int!
+  lastWrapDate: DateTime
+}
+
+extend type Query {
+  me: AppUser
+}
+
+extend type Mutation {
+  updatePreferences(theme: String, notifications: Boolean): AppUser!
+}

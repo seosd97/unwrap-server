@@ -1,0 +1,87 @@
+# Spotify Album Types
+
+enum AlbumType {
+  album
+  single
+  compilation
+}
+
+enum ReleaseDatePrecision {
+  year
+  month
+  day
+}
+
+# Base album fields (shared between simplified and full)
+interface AlbumBase {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  album_type: AlbumType!
+  total_tracks: Int!
+  available_markets: [String!]!
+  external_urls: ExternalUrls!
+  images: [Image!]!
+  release_date: String!  # Keep as String due to varying precision (year/month/day)
+  release_date_precision: ReleaseDatePrecision!
+  type: String!
+  restrictions: Restrictions
+}
+
+# Simplified album (no tracks, used in lists and nested contexts)
+type SimplifiedAlbum implements AlbumBase {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  album_type: AlbumType!
+  total_tracks: Int!
+  available_markets: [String!]!
+  external_urls: ExternalUrls!
+  images: [Image!]!
+  release_date: String!
+  release_date_precision: ReleaseDatePrecision!
+  type: String!
+  restrictions: Restrictions
+
+  # Simplified specific
+  album_group: String
+  artists: [SimplifiedArtist!]!
+}
+
+# Full album (includes track listing and complete metadata)
+type Album implements AlbumBase {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  album_type: AlbumType!
+  total_tracks: Int!
+  available_markets: [String!]!
+  external_urls: ExternalUrls!
+  images: [Image!]!
+  release_date: String!
+  release_date_precision: ReleaseDatePrecision!
+  type: String!
+  restrictions: Restrictions
+
+  # Full album metadata
+  artists: [Artist!]!
+  tracks: TrackConnection!
+  copyrights: [Copyright!]!
+  external_ids: ExternalIds
+  genres: [String!]!
+  label: String
+  popularity: Int
+}
+
+type TrackConnection {
+  href: String!
+  limit: Int!
+  next: String
+  offset: Int!
+  previous: String
+  total: Int!
+  items: [SimplifiedTrack!]!
+}

@@ -1,0 +1,36 @@
+# Spotify User Types
+
+# Public user profile (other users)
+type User {
+  id: ID!
+  uri: String!
+  href: String!
+  display_name: String
+  external_urls: ExternalUrls!
+  followers: Followers
+  images: [Image!]!
+  type: String!
+}
+
+# Current user profile (authenticated user with private info)
+type UserProfile {
+  id: ID!
+  uri: String!
+  href: String!
+  display_name: String
+  external_urls: ExternalUrls!
+  followers: Followers
+  images: [Image!]!
+  type: String!
+
+  # Private fields (requires authentication)
+  email: String
+  country: String
+  product: String
+  explicit_content: ExplicitContentSettings
+}
+
+type ExplicitContentSettings {
+  filter_enabled: Boolean!
+  filter_locked: Boolean!
+}

@@ -1,17 +1,10 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
+import { typeDefs } from "./graphql/index.js";
 
 const server = new ApolloServer({
-  typeDefs: `#graphql
-    type Query {
-      hello: String
-    }
-  `,
-  resolvers: {
-    Query: {
-      hello: () => "Hello, world!",
-    },
-  },
+  typeDefs,
+  resolvers: {},
 });
 
 const { url } = await startStandaloneServer(server, {

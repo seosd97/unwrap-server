@@ -1,0 +1,31 @@
+# Common Types shared across Spotify objects
+
+type ExternalUrls {
+  spotify: String!
+}
+
+type ExternalIds {
+  isrc: String
+  ean: String
+  upc: String
+}
+
+type Image {
+  url: String!
+  height: Int
+  width: Int
+}
+
+type Followers {
+  href: String
+  total: Int!
+}
+
+type Copyright {
+  text: String!
+  type: String!
+}
+
+type Restrictions {
+  reason: String!
+}

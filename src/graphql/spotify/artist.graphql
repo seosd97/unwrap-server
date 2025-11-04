@@ -1,0 +1,27 @@
+# Spotify Artist Types
+
+# Simplified artist (basic info, used in nested contexts)
+type SimplifiedArtist {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  external_urls: ExternalUrls!
+  type: String!
+}
+
+# Full artist (includes followers, genres, images, popularity)
+type Artist {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  external_urls: ExternalUrls!
+  type: String!
+
+  # Full artist metadata
+  followers: Followers!
+  genres: [String!]!
+  images: [Image!]!
+  popularity: Int!
+}

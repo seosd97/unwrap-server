@@ -1,0 +1,78 @@
+# Spotify Playlist Types
+
+# Base playlist fields (shared between simplified and full)
+interface PlaylistBase {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  description: String
+  collaborative: Boolean!
+  external_urls: ExternalUrls!
+  images: [Image!]!
+  owner: User!
+  public: Boolean
+  snapshot_id: String!
+  type: String!
+}
+
+# Simplified playlist (track reference only)
+type SimplifiedPlaylist implements PlaylistBase {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  description: String
+  collaborative: Boolean!
+  external_urls: ExternalUrls!
+  images: [Image!]!
+  owner: User!
+  public: Boolean
+  snapshot_id: String!
+  type: String!
+
+  # Track reference (count only)
+  tracks: PlaylistTrackReference!
+}
+
+type PlaylistTrackReference {
+  href: String!
+  total: Int!
+}
+
+# Full playlist (complete track listing)
+type Playlist implements PlaylistBase {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  description: String
+  collaborative: Boolean!
+  external_urls: ExternalUrls!
+  images: [Image!]!
+  owner: User!
+  public: Boolean
+  snapshot_id: String!
+  type: String!
+
+  # Full track list
+  followers: Followers!
+  tracks: PlaylistTrackConnection!
+}
+
+type PlaylistTrackConnection {
+  href: String!
+  limit: Int!
+  next: String
+  offset: Int!
+  previous: String
+  total: Int!
+  items: [PlaylistTrack!]!
+}
+
+type PlaylistTrack {
+  added_at: DateTime!
+  added_by: User!
+  is_local: Boolean!
+  track: Track!
+}

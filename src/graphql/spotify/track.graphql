@@ -1,0 +1,46 @@
+# Spotify Track Types
+
+# Simplified track (used in album track lists)
+type SimplifiedTrack {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  artists: [SimplifiedArtist!]!
+  available_markets: [String!]!
+  disc_number: Int!
+  duration_ms: Int!
+  explicit: Boolean!
+  external_urls: ExternalUrls!
+  is_local: Boolean!
+  preview_url: String
+  track_number: Int!
+  type: String!
+  is_playable: Boolean
+  restrictions: Restrictions
+}
+
+# Full track (includes album info and popularity)
+type Track {
+  id: ID!
+  uri: String!
+  href: String!
+  name: String!
+  artists: [SimplifiedArtist!]!
+  available_markets: [String!]!
+  disc_number: Int!
+  duration_ms: Int!
+  explicit: Boolean!
+  external_urls: ExternalUrls!
+  is_local: Boolean!
+  preview_url: String
+  track_number: Int!
+  type: String!
+  is_playable: Boolean
+  restrictions: Restrictions
+
+  # Full track metadata
+  album: SimplifiedAlbum!
+  external_ids: ExternalIds
+  popularity: Int
+}
