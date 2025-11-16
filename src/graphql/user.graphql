@@ -8,16 +8,16 @@ type AppUser {
   updatedAt: DateTime!
 
   # App-specific fields
-  preferences: UserPreferences
-  stats: UserStats
+  preferences: AppUserPreferences
+  stats: AppUserStats
 }
 
-type UserPreferences {
+type AppUserPreferences {
   theme: String
   notifications: Boolean
 }
 
-type UserStats {
+type AppUserStats {
   totalWraps: Int!
   lastWrapDate: DateTime
 }
