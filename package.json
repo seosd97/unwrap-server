@@ -10,7 +10,7 @@
   "devDependencies": {
     "@swc/cli": "^0.7.8",
     "@swc/core": "^1.14.0",
-    "@types/node": "^24.9.2",
+    "@types/node": "^24.10.1",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   },
@@ -19,6 +19,7 @@
     "@graphql-tools/load-files": "^7.0.1",
     "@graphql-tools/merge": "^9.1.2",
     "@spotify/web-api-ts-sdk": "^1.2.0",
-    "graphql": "^16.11.0"
+    "graphql": "^16.11.0",
+    "lru-cache": "^11.2.2"
   }
 }
