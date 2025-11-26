@@ -41,7 +41,7 @@ export class SpotifyClient {
     this.instances.delete(accessToken);
   }
 
-  static getCacheStats() {
+  static getCacheStats(): { size: number; max: number; ttl: number } {
     return {
       size: this.instances.size,
       max: this.instances.max,
